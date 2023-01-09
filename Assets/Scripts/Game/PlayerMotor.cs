@@ -19,6 +19,9 @@ namespace DaggerfallWorkshop.Game
     {
         #region Fields
 
+        //TESTING
+        public Transform cameraTesting; 
+
         const float walkingRayDistance = 1.0f;
         const float ridingRayDistance = 2.0f;
 
@@ -358,7 +361,9 @@ namespace DaggerfallWorkshop.Game
 
             acrobatMotor.HitHead(ref moveDirection);
 
-            groundMotor.MoveWithMovingPlatform(moveDirection);
+            Quaternion yaw = Quaternion.Euler(0, cameraTesting.localEulerAngles.y, 0);
+            Vector3 finalMoveDir = yaw * moveDirection; 
+            groundMotor.MoveWithMovingPlatform(finalMoveDir);
         }
 
         void Update()

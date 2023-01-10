@@ -58,6 +58,7 @@ namespace DaggerfallWorkshop.Game
         private PlayerEnterExit playerEnterExit;
         private PlayerGroundMotor groundMotor;
         private PlayerMoveScanner playerScanner;
+        private VRCamera vrCamera; 
 
         private CollisionFlags collisionFlags = 0;
 
@@ -268,6 +269,7 @@ namespace DaggerfallWorkshop.Game
             playerScanner = GetComponent<PlayerMoveScanner>();
             playerEnterExit = GameManager.Instance.PlayerEnterExit;
             rappelMotor = GetComponent<RappelMotor>();
+            vrCamera = GetComponent<VRCamera>(); 
             //hangingMotor = GetComponent<HangingMotor>();
 
             // Allow for resetting specific player state on new game or when game starts loading
@@ -361,8 +363,7 @@ namespace DaggerfallWorkshop.Game
 
             acrobatMotor.HitHead(ref moveDirection);
 
-            Quaternion yaw = Quaternion.Euler(0, cameraTesting.localEulerAngles.y, 0);
-            Vector3 finalMoveDir = yaw * moveDirection; 
+            Vector3 finalMoveDir = vrCamera.ReturnYaw() * moveDirection; 
             groundMotor.MoveWithMovingPlatform(finalMoveDir);
         }
 

@@ -988,31 +988,31 @@ namespace DaggerfallWorkshop.Game
 
             setBinding(KeyCode.PageUp, Actions.FloatUp, true);
             setBinding(KeyCode.PageDown, Actions.FloatDown, true);
-            setBinding(KeyCode.Space, Actions.Jump, true);
+            setBinding(KeyCode.JoystickButton0, Actions.Jump, true);
             setBinding(KeyCode.C, Actions.Crouch, true);
             setBinding(KeyCode.LeftControl, Actions.Slide, true);
-            setBinding(KeyCode.LeftShift, Actions.Run, true);
+            setBinding(KeyCode.JoystickButton8, Actions.Run, true);
             setBinding(KeyCode.Mouse2, Actions.AutoRun, true);
 
             setBinding(KeyCode.R, Actions.Rest, true);
             setBinding(KeyCode.T, Actions.Transport, true);
-            setBinding(KeyCode.F1, Actions.StealMode, true);
+            setBinding(KeyCode.JoystickButton9, Actions.StealMode, true);
             setBinding(KeyCode.F2, Actions.GrabMode, true);
             setBinding(KeyCode.F3, Actions.InfoMode, true);
             setBinding(KeyCode.F4, Actions.TalkMode, true);
 
-            setBinding(KeyCode.Backspace, Actions.CastSpell, true);
+            setBinding(KeyCode.Joystick1Button14, Actions.CastSpell, true);
             setBinding(KeyCode.Q, Actions.RecastSpell, true);
-            setBinding(KeyCode.E, Actions.AbortSpell, true);
+            setBinding(KeyCode.Joystick1Button0, Actions.AbortSpell, true);
             setBinding(KeyCode.U, Actions.UseMagicItem, true);
 
-            setBinding(KeyCode.Z, Actions.ReadyWeapon, true);
-            setBinding(KeyCode.Mouse1, Actions.SwingWeapon, true);
+            setBinding(KeyCode.JoystickButton5, Actions.ReadyWeapon, true);
+            setBinding(KeyCode.Joystick3Button0, Actions.SwingWeapon, true);
             setBinding(KeyCode.H, Actions.SwitchHand, true);
 
             setBinding(KeyCode.I, Actions.Status, true);
             setBinding(KeyCode.F5, Actions.CharacterSheet, true);
-            setBinding(KeyCode.F6, Actions.Inventory, true);
+            setBinding(KeyCode.JoystickButton2, Actions.Inventory, true);
 
             setBinding(KeyCode.Mouse0, Actions.ActivateCenterObject, true);
             setBinding(KeyCode.Return, Actions.ActivateCursor, true);
@@ -1024,8 +1024,8 @@ namespace DaggerfallWorkshop.Game
 
             setBinding(KeyCode.L, Actions.LogBook, true);
             setBinding(KeyCode.N, Actions.NoteBook, true);
-            setBinding(KeyCode.M, Actions.AutoMap, true);
-            setBinding(KeyCode.V, Actions.TravelMap, true);
+            setBinding(KeyCode.JoystickButton1, Actions.AutoMap, true);
+            setBinding(KeyCode.JoystickButton3, Actions.TravelMap, true);
 
             setBinding(KeyCode.F8, Actions.PrintScreen, true);
             setBinding(KeyCode.F9, Actions.QuickSave, true);
@@ -1040,6 +1040,7 @@ namespace DaggerfallWorkshop.Game
             setJoystickUIBinding(KeyCode.JoystickButton3, JoystickUIActions.RightClick);
             setJoystickUIBinding(KeyCode.JoystickButton2, JoystickUIActions.MiddleClick);
             setJoystickUIBinding(KeyCode.JoystickButton1, JoystickUIActions.Back);
+            
             UpdateBindingCache();
 
             foreach (AxisActions axisAction in Enum.GetValues(typeof(AxisActions)))

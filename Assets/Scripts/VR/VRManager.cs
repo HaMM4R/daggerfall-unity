@@ -7,16 +7,24 @@ using DaggerfallWorkshop.Game.Serialization;
 
 namespace DaggerfallWorkshop.Game
 {
-    public class VRCamera : MonoBehaviour
+    public class VRManager : MonoBehaviour
     {
         private Transform mainCamera;
+
+        [SerializeField]
+        private Transform leftHand;
+        [SerializeField]
+        private Transform rightHand;
+
+        public Transform LeftHand { get { return leftHand; } }
+        public Transform RightHand { get { return rightHand; } }
 
         void Start()
         {
             mainCamera = GameManager.Instance.MainCamera.transform; 
         }
 
-        public Quaternion ReturnYaw()
+        public Quaternion ReturnCameraYaw()
         {
             return Quaternion.Euler(0, mainCamera.localEulerAngles.y, 0);
         }

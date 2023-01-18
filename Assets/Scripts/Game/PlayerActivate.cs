@@ -60,7 +60,9 @@ namespace DaggerfallWorkshop.Game
 
         PlayerGPS playerGPS;
         PlayerEnterExit playerEnterExit;        // Example component to enter/exit buildings
+        VRManager vrManager; 
         Camera mainCamera;
+        public Camera testing; 
         int playerLayerMask = 0;
 
         Transform deferredInteriorDoorOwner;    // Used to defer interior transition after popup message
@@ -207,6 +209,8 @@ namespace DaggerfallWorkshop.Game
         {
             playerGPS = GetComponent<PlayerGPS>();
             playerEnterExit = GetComponent<PlayerEnterExit>();
+            vrManager = GetComponent<VRManager>(); 
+         
             mainCamera = GameManager.Instance.MainCamera;
             playerLayerMask = ~(1 << LayerMask.NameToLayer("Player"));
         }
@@ -243,6 +247,7 @@ namespace DaggerfallWorkshop.Game
                 // Handle pending spell cast
                 if (GameManager.Instance.PlayerEffectManager.HasReadySpell)
                 {
+                    Debug.Log("Trying to activate ray with spell ready from cursor");
                     // Exclude touch spells from this check
                     MagicAndEffects.EntityEffectBundle spell = GameManager.Instance.PlayerEffectManager.ReadySpell;
                     if (spell.Settings.TargetType != MagicAndEffects.TargetTypes.ByTouch)
@@ -265,6 +270,7 @@ namespace DaggerfallWorkshop.Game
             }
 
             // Handle click delay
+            clickDelay = -1; 
             if (clickDelay > 0 && Time.realtimeSinceStartup < clickDelayStartTime + clickDelay)
             {
                 return;
@@ -282,6 +288,7 @@ namespace DaggerfallWorkshop.Game
                 Ray ray = new Ray();
                 if (GameManager.Instance.PlayerMouseLook.cursorActive)
                 {
+                    Debug.Log("Trying to activate ray from cursor");
                     if (DaggerfallUnity.Settings.RetroRenderingMode > 0)
                     {
                         // Need to scale screen mouse position to match actual viewport area when retro rendering enabled
@@ -305,7 +312,12 @@ namespace DaggerfallWorkshop.Game
                 else
                 {
                     // Ray from camera crosshair position
-                    ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
+                    Debug.Log("Activating Ray from camera position");
+
+
+                    //Debug.DrawRay(mainCamera.transform.position, vrCamera.ReturnFacingDirection(), Color.green, 10);
+                    //ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
+                    ray = new Ray(vrManager.RightHand.position, vrManager.RightHand.forward);
                 }
 
                 // Test ray against scene

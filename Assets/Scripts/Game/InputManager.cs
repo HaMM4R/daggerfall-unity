@@ -1001,7 +1001,7 @@ namespace DaggerfallWorkshop.Game
             setBinding(KeyCode.F3, Actions.InfoMode, true);
             setBinding(KeyCode.F4, Actions.TalkMode, true);
 
-            setBinding(KeyCode.Joystick1Button14, Actions.CastSpell, true);
+            setBinding(KeyCode.K, Actions.CastSpell, true);
             setBinding(KeyCode.Q, Actions.RecastSpell, true);
             setBinding(KeyCode.Joystick1Button0, Actions.AbortSpell, true);
             setBinding(KeyCode.U, Actions.UseMagicItem, true);
@@ -1014,7 +1014,7 @@ namespace DaggerfallWorkshop.Game
             setBinding(KeyCode.F5, Actions.CharacterSheet, true);
             setBinding(KeyCode.JoystickButton2, Actions.Inventory, true);
 
-            setBinding(KeyCode.Mouse0, Actions.ActivateCenterObject, true);
+            setBinding(KeyCode.Joystick1Button14, Actions.ActivateCenterObject, true);
             setBinding(KeyCode.Return, Actions.ActivateCursor, true);
 
             setBinding(KeyCode.Insert, Actions.LookUp, true);

@@ -19,9 +19,6 @@ namespace DaggerfallWorkshop.Game
     {
         #region Fields
 
-        //TESTING
-        public Transform cameraTesting; 
-
         const float walkingRayDistance = 1.0f;
         const float ridingRayDistance = 2.0f;
 
@@ -58,7 +55,7 @@ namespace DaggerfallWorkshop.Game
         private PlayerEnterExit playerEnterExit;
         private PlayerGroundMotor groundMotor;
         private PlayerMoveScanner playerScanner;
-        private VRCamera vrCamera; 
+        private VRManager vrManager; 
 
         private CollisionFlags collisionFlags = 0;
 
@@ -269,7 +266,7 @@ namespace DaggerfallWorkshop.Game
             playerScanner = GetComponent<PlayerMoveScanner>();
             playerEnterExit = GameManager.Instance.PlayerEnterExit;
             rappelMotor = GetComponent<RappelMotor>();
-            vrCamera = GetComponent<VRCamera>(); 
+            vrManager = GetComponent<VRManager>(); 
             //hangingMotor = GetComponent<HangingMotor>();
 
             // Allow for resetting specific player state on new game or when game starts loading
@@ -363,7 +360,7 @@ namespace DaggerfallWorkshop.Game
 
             acrobatMotor.HitHead(ref moveDirection);
 
-            Vector3 finalMoveDir = vrCamera.ReturnYaw() * moveDirection; 
+            Vector3 finalMoveDir = vrManager.ReturnCameraYaw() * moveDirection; 
             groundMotor.MoveWithMovingPlatform(finalMoveDir);
         }
 
